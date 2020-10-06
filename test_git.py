@@ -16,7 +16,7 @@ def commit():
     git_push_cmd = f"git push origin {branch}"
 
     p = subprocess.run(git_add_cmd, shell=True, check=True, stdout=subprocess.PIPE)
-    logger.info(f"update files {p.stdout}")
+    #logger.info(f"update files {p.stdout}")
     p = subprocess.run(git_commit_cmd, shell=True, check=True)
     p = subprocess.run(git_id_cmd, shell=True, check=True, stdout=subprocess.PIPE)
     logger.info(f"commit: {p.stdout.decode()}")
