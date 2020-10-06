@@ -5,7 +5,7 @@ logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
 
-def commit():
+def commit(msg):
     import subprocess
     msg = ""
     msg = "CLUSTER" + msg
@@ -20,10 +20,10 @@ def commit():
     logger.info(f"update files {p.stdout.decode()}")
     p = subprocess.run(git_id_cmd, shell=True, check=True, stdout=subprocess.PIPE)
     logger.info(f"commit: {p.stdout.decode()}")
-    p = subprocess.run(git_push_cmd, shell=True, check=True)
-    logger.info("push")
+    p = subprocess.run(git_push_cmd, shell=True, check=True, stdout=subprocess.PIPE)
+    logger.info(f"push: {p.stdout.decode()}")
 
 
 if __name__ == '__main__':
     # _test_handler()
-    commit()
+    commit("")
