@@ -4,10 +4,10 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(logging.StreamHandler())
 
+import subprocess
+
 
 def commit(msg):
-    import subprocess
-    msg = ""
     msg = "[CLUSTER]" + msg
     branch = "master"
     git_add_cmd = "git add --update ."
