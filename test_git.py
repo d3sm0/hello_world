@@ -8,7 +8,7 @@ import subprocess
 
 
 def commit(msg):
-    msg = "[CLUSTER]" + msg
+    msg = "[CLUSTER]:\t" + msg
     branch = "master"
     git_add_cmd = "git add --update ."
     git_commit_cmd = f"git commit -m '{msg}'"
