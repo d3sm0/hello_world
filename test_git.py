@@ -8,7 +8,7 @@ logger.addHandler(logging.StreamHandler())
 def commit(msg):
     import subprocess
     msg = ""
-    msg = "CLUSTER" + msg
+    msg = "[CLUSTER]" + msg
     branch = "master"
     git_add_cmd = "git add --update ."
     git_commit_cmd = f"git commit -m '{msg}'"
@@ -25,9 +25,12 @@ def commit(msg):
 
     to_cluster = "rsync -avP $PWD cluster:~/ --exclude-from=$PWD/.gitignore"
     p = subprocess.run(to_cluster, shell=True, check=True, stdout=subprocess.PIPE)
-    logger.info(f"push: {p.stdout.decode()}")
+    logger.info(f"pushing to cluster: {p.stdout.decode()}")
 
 
 if __name__ == '__main__':
-    # _test_handler()
-    commit("")
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-m", default="", type=str)
+    commit(parser.parse_args().m)
