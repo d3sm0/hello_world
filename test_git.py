@@ -17,11 +17,11 @@ def commit(msg):
 
     p = subprocess.run(git_add_cmd, shell=True, check=True, stdout=subprocess.PIPE)
     p = subprocess.run(git_commit_cmd, shell=True, check=True, stdout=subprocess.PIPE)
-    logger.info(f"update files {p.stdout.decode()}")
+    #logger.info(f"update files {p.stdout.decode()}")
     p = subprocess.run(git_id_cmd, shell=True, check=True, stdout=subprocess.PIPE)
-    logger.info(f"commit: {p.stdout.decode()}")
+    #logger.info(f"commit: {p.stdout.decode()}")
     p = subprocess.run(git_push_cmd, shell=True, check=True, stdout=subprocess.PIPE)
-    logger.info(f"push: {p.stdout.decode()}")
+    #logger.info(f"push: {p.stdout.decode()}")
 
     to_cluster = "rsync -avP $PWD cluster:~/ --exclude-from=$PWD/.gitignore"
     p = subprocess.run(to_cluster, shell=True, check=True, stdout=subprocess.PIPE)
