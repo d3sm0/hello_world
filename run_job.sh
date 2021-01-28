@@ -7,8 +7,8 @@
 #SBATCH --mem-per-cpu 1024
 #SBATCH -C intel
 #SBATCH --workdir=/homedtic/stotaro/ihvg
-#SBATCH -o /homedtic/stotaro/ihvg/jobs/%N.%J.ihvg.out # STDOUT
-#SBATCH -e /homedtic/stotaro/ihvg/jobs/%N.%J.ihvg.err # STDOUT
+#SBATCH -o /homedtic/stotaro/jobs/%N.%J.ihvg.out # STDOUT
+#SBATCH -e /homedtic/stotaro/jobs/%N.%J.ihvg.err # STDOUT
 
 set -x
 # rm -rf jobs/*
